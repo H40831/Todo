@@ -1,20 +1,11 @@
-/*
-・仕様書
-	・必須
-		・CRUD（作成、読み込み、更新、削除）
-		・入力
-		・チェック(オンオフ)
-		・更新しても消えない（保存）
-	・必須じゃない
-		・移動（DO <-> DONE間）
-		・同期
-*/
 let doArray=[];
 let doneArray=[];
+
+//local strage
 let doSavedata='';
 let doneSavedata='';
 
-//作成
+//Create
 const addTextToArray=(text,array)=>{
 	let x = $(text).val();
 	if(x!==''){
@@ -26,7 +17,7 @@ const addTextToArray=(text,array)=>{
 	}
 };
 
-//読み込み
+//Read
 const displayArrayAsList=(array,list,listClass,checked)=>{//checkedはtrueもしくはfalseにする。
 	$(list).empty();
 	for(let x=0;x<array.length;x++){
@@ -53,6 +44,7 @@ const controlTitle=()=>{//小要素がある<ul>のタイトルを表示、小�
 	}
 };
 
+//Upload
 const save=()=>{
 	doSavedata=JSON.stringify(doArray);
 	doneSavedata=JSON.stringify(doneArray);
@@ -66,6 +58,16 @@ const load=()=>{
 	doneArray=JSON.parse(doneSavedata);
 	displayArrayAsList(doArray,'#doList','do',false);
 	displayArrayAsList(doneArray,'#doneList','done',true);	
+};
+
+//Derete
+const removeFromList=function(btn,list,array,that){
+	if($(that).hasClass(list)){
+		let i=$(btn,'.'+list).index(that);
+		array.splice(i,1);
+		displayArrayAsList(doArray,'#doList','do',false);
+		displayArrayAsList(doneArray,'#doneList','done',true);
+	}
 };
 
 //実行 jQuery
@@ -100,13 +102,3 @@ $(function(){
 		removeFromList('.fa-trash-alt','done',doneArray,this);
 	});
 });
-
-//削除
-const removeFromList=function(btn,list,array,that){
-	if($(that).hasClass(list)){
-		let i=$(btn,'.'+list).index(that);
-		array.splice(i,1);
-		displayArrayAsList(doArray,'#doList','do',false);
-		displayArrayAsList(doneArray,'#doneList','done',true);
-	}
-};
