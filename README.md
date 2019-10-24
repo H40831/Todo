@@ -1,4 +1,4 @@
-# Todoリスト - Ver.jQuery
+# Todoリスト - Ver. jQuery
 制作日: 2018年末頃
 
 ## 確認方法
