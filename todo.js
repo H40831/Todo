@@ -5,7 +5,22 @@ let doneArray=[];
 let doSavedata='';
 let doneSavedata='';
 
-//Create
+const save=()=>{
+	doSavedata=JSON.stringify(doArray);
+	doneSavedata=JSON.stringify(doneArray);
+	localStorage.setItem('doSavedata',doSavedata);
+	localStorage.setItem('doneSavedata',doneSavedata);
+};
+const load=()=>{
+	doSavedata=localStorage.getItem('doSavedata');
+	doneSavedata=localStorage.getItem('doneSavedata');
+	doArray=JSON.parse(doSavedata);
+	doneArray=JSON.parse(doneSavedata);
+	displayArrayAsList(doArray,'#doList','do',false);
+	displayArrayAsList(doneArray,'#doneList','done',true);	
+};
+
+//作成
 const addTextToArray=(text,array)=>{
 	let x = $(text).val();
 	if(x!==''){
@@ -17,7 +32,7 @@ const addTextToArray=(text,array)=>{
 	}
 };
 
-//Read
+//読み込み
 const displayArrayAsList=(array,list,listClass,checked)=>{//checkedはtrueもしくはfalseにする。
 	$(list).empty();
 	for(let x=0;x<array.length;x++){
@@ -44,23 +59,7 @@ const controlTitle=()=>{//小要素がある<ul>のタイトルを表示、小�
 	}
 };
 
-//Upload
-const save=()=>{
-	doSavedata=JSON.stringify(doArray);
-	doneSavedata=JSON.stringify(doneArray);
-	localStorage.setItem('doSavedata',doSavedata);
-	localStorage.setItem('doneSavedata',doneSavedata);
-};
-const load=()=>{
-	doSavedata=localStorage.getItem('doSavedata');
-	doneSavedata=localStorage.getItem('doneSavedata');
-	doArray=JSON.parse(doSavedata);
-	doneArray=JSON.parse(doneSavedata);
-	displayArrayAsList(doArray,'#doList','do',false);
-	displayArrayAsList(doneArray,'#doneList','done',true);	
-};
-
-//Derete
+//削除
 const removeFromList=function(btn,list,array,that){
 	if($(that).hasClass(list)){
 		let i=$(btn,'.'+list).index(that);
