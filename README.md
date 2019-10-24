@@ -2,7 +2,8 @@
 制作日: 2018年末頃
 
 ## 確認方法
-Google Chromeにてtodo.htmlを開いてご確認ください。
+Githubの「Clone or download」ボタンから「Download ZIP」を選択してファイルをダウンロードしてください。<br>
+zipを展開し、Google Chromeにてtodo.htmlを開いてご確認ください。
 
 ## 開発環境
 言語: HTML/CSS/JavaScript/jQuery
