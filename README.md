@@ -1,4 +1,5 @@
-# Todoリスト（jQuery）
+# Todoリスト (jQuery)
+(制作日: 2018年末頃)<br><br>
 Google Chromeにてtodo.htmlを開いてご確認ください。
 
 ## 開発環境
